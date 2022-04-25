@@ -2,8 +2,8 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "storageAccounts_mohananjalistorage1_name": {
-            "defaultValue": "mohananjalistorage1",
+        "storageAccounts_vamseestore_name_name": {
+            "defaultValue":vamseestore_name",
             "type": "String"
         }
     },
@@ -12,7 +12,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-09-01",
-            "name": "[parameters('storageAccounts_mohananjalistorage1_name')]",
+            "name": "[parameters('storageAccounts_vamseestore_name_name')]",
             "location": "eastus",
             "sku": {
                 "name": "Standard_LRS",
@@ -52,7 +52,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices",
             "apiVersion": "2021-09-01",
-            "name": "[concat(parameters('storageAccounts_mohananjalistorage1_name'), '/default')]",
+            "name": "[concat(parameters('storageAccounts_vamseestore_name_name'), '/default')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamseestore'))]"
             ],
