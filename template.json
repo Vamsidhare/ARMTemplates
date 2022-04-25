@@ -12,7 +12,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-09-01",
-            "name": "[parameters('storageAccounts_vamsidhar_name_name')]",
+            "name": "[parameters('storageAccounts_vamsidhar_name')]",
             "location": "eastus",
             "sku": {
                 "name": "Standard_LRS",
