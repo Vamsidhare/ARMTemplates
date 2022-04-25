@@ -52,7 +52,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices",
             "apiVersion": "2021-09-01",
-            "name": "[concat(parameters('storageAccounts_vamsidhar_name_name'), '/default')]",
+            "name": "[concat(parameters('storageAccounts_vamsidhar_name'), '/default')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsidhar'))]"
             ],
