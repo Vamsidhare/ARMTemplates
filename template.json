@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccounts_vamsidhar_name": {
-            "defaultValue": "vamsi",
+            "defaultValue": "vamsi1",
             "type": "String"
         }
     },
@@ -121,7 +121,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
             "apiVersion": "2021-09-01",
-            "name": "[concat(parameters('storageAccounts_vamsi_name'), '/default/testcontainer')]",
+            "name": "[concat(parameters('storageAccounts_vamsi_name'), '/default/testcontainer1')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_vamsi_name'), 'default')]",
                 "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsi_name'))]"
