@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccounts_vamsidhar_name": {
-            "defaultValue": "vamsidhar",
+            "defaultValue": "vamsi",
             "type": "String"
         }
     },
@@ -12,7 +12,7 @@
         {
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-09-01",
-            "name": "[parameters('storageAccounts_vamsidhar_name')]",
+            "name": "[parameters('storageAccounts_vamsi_name')]",
             "location": "eastus",
             "sku": {
                 "name": "Standard_LRS",
@@ -21,6 +21,7 @@
             "kind": "StorageV2",
             "properties": {
                 "defaultToOAuthAuthentication": false,
+                "publicNetworkAccess": "Enabled",
                 "allowCrossTenantReplication": true,
                 "minimumTlsVersion": "TLS1_2",
                 "allowBlobPublicAccess": true,
@@ -52,9 +53,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices",
             "apiVersion": "2021-09-01",
-            "name": "[concat(parameters('storageAccounts_vamsidhar_name'), '/default')]",
+            "name": "[concat(parameters('storageAccounts_vamsi_name'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsidhar'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsi_name'))]"
             ],
             "sku": {
                 "name": "Standard_LRS",
@@ -83,24 +84,33 @@
             }
         },
         {
+            "type": "Microsoft.Storage/storageAccounts/fileServices",
+            "apiVersion": "2021-09-01",
+            "name": "[concat(parameters('storageAccounts_vamsi_name'), '/default')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsi_name'))]"
+            ],
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            }
+           
+        },
+        {
             "type": "Microsoft.Storage/storageAccounts/queueServices",
             "apiVersion": "2021-09-01",
-            "name": "[concat(parameters('storageAccounts_vamsidhar_name'), '/default')]",
+            "name": "[concat(parameters('storageAccounts_vamsi_name'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsidhar_name'))]"
-            ],
-            "properties": {
-                "cors": {
-                    "corsRules": []
-                }
-            }
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsi_name'))]"
+            ]
+           
         },
         {
             "type": "Microsoft.Storage/storageAccounts/tableServices",
             "apiVersion": "2021-09-01",
-            "name": "[concat(parameters('storageAccounts_vamsidhar_name'), '/default')]",
+            "name": "[concat(parameters('storageAccounts_vamsi_name'), '/default')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsidhar_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsi_name'))]"
             ],
             "properties": {
                 "cors": {
@@ -111,10 +121,10 @@
         {
             "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
             "apiVersion": "2021-09-01",
-            "name": "[concat(parameters('storageAccounts_vamsidhar_name'), '/default/vamsidharchowdarycontainer')]",
+            "name": "[concat(parameters('storageAccounts_vamsi_name'), '/default/testcontainer')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_vamseestore_name'), 'default')]",
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsidhar_name'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('storageAccounts_vamsi_name'), 'default')]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_vamsi_name'))]"
             ],
             "properties": {
                 "immutableStorageWithVersioning": {
@@ -127,3 +137,4 @@
         }
     ]
 }
+© 2022 GitHub, Inc.
