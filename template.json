@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageAccounts_vamseestore_name": {
-            "defaultValue":vamseestore",
+            "defaultValue":vamsidhar",
             "type": "String"
         }
     },
